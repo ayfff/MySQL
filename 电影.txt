@@ -1,0 +1,56 @@
+mysql> use ayfff;
+Database changed
+
+mysql>  create table films(name char(20),year int(4),daoyan varchar(10),grade float(5));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> insert into films(
+    -> name,year,daoyan,grade) values('cjl',1998,'qingchun',7.9),('shabi',2018,'kongbu',8.2),('xihuan',2017,'jiating',9.0)
+    -> ;
+Query OK, 3 rows affected (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from films;
++--------+------+----------+-------+
+| name   | year | daoyan   | grade |
++--------+------+----------+-------+
+| cjl    | 1998 | qingchun |   7.9 |
+| shabi  | 2018 | kongbu   |   8.2 |
+| xihuan | 2017 | jiating  |     9 |
++--------+------+----------+-------+
+3 rows in set (0.01 sec)
+
+
+mysql> select * from films where name like '%xihuan%';
++--------+------+---------+-------+
+| name   | year | daoyan  | grade |
++--------+------+---------+-------+
+| xihuan | 2017 | jiating |     9 |
++--------+------+---------+-------+
+1 row in set (0.01 sec)
+
+
+mysql> select * from films where year like '%2017%';
++--------+------+---------+-------+
+| name   | year | daoyan  | grade |
++--------+------+---------+-------+
+| xihuan | 2017 | jiating |     9 |
++--------+------+---------+-------+
+1 row in set (0.01 sec)
+
+
+mysql> select * from films where grade like '%7.9%';
++------+------+----------+-------+
+| name | year | daoyan   | grade |
++------+------+----------+-------+
+| cjl  | 1998 | qingchun |   7.9 |
++------+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select name,max(grade) from films;
++------+------------+
+| name | max(grade) |
++------+------------+
+| cjl  |          9 |
++------+------------+
+1 row in set (0.01 sec)
